@@ -1,8 +1,8 @@
 let count;
 
 window.onload = async function(){
-    await newTorus();
     count = 100;
+    await newTorus();
     document.getElementById('message').textContent = "start" ;
     checkUserLooking();
 }
