@@ -5,7 +5,7 @@ https://BlockMages.github.io/mamemaki/
 
 
 Live page
-https://BlockMages.github.io/addresscollector.html
+https://BlockMages.github.io/mamemaki/addresscollector.html
 
 
 address list
