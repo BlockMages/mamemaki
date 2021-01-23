@@ -1,8 +1,9 @@
 let count;
 
 window.onload = function(){
+    newTorus();
     count = 100;
-    document.getElementById('message').textContent = "start" 
+    document.getElementById('message').textContent = "start" ;
     checkUserLooking();
 }
 
