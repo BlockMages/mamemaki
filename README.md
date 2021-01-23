@@ -8,5 +8,5 @@ Live page
 https://BlockMages.github.io/mamemaki/addresscollector.html
 
 
-address list
+Fan's address list
 https://maticaddresscorrector.onrender.com/list
