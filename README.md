@@ -1,2 +1,2 @@
 # mamemaki
-https://BlockMages.github.com/mamemaki/
+https://BlockMages.github.io/mamemaki/
