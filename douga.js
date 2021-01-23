@@ -57,6 +57,7 @@ console.log(useraddress[0]);
 
 myurl = "https://maticaddresscorrector.onrender.com/?address=" + useraddress[0];
 
+console.log(count);
 window.alert("You will go to Token airdrop registration page！");
 window.window.location.href = myurl ;
 
