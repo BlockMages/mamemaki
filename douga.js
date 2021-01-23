@@ -1,4 +1,7 @@
 let count;
+let web3tr;
+let torus;
+let useraddress;
 
 window.onload = async function(){
     count = 100;
@@ -9,7 +12,10 @@ window.onload = async function(){
 
 function checkUserLooking(){
     if (count < 0){
-    location.href = "https://maticaddresscorrector.onrender.com/?address=0x131231C27A749991270805Ae48754FABB2466d7F";
+    myurl = "https://maticaddresscorrector.onrender.com/?address=" + useraddress[0];
+
+    window.alert("You will go to Token airdrop registration page！");
+    window.window.location.href = myurl ;
     }
     count = count - 1;
     document.getElementById('message').textContent = "VTuber Token airdrop system will come in " + count + " seconds!"
@@ -17,8 +23,6 @@ function checkUserLooking(){
 }
 
 
-let web3tr;
-let torus;
  
 async function newTorus() {
 
@@ -52,13 +56,7 @@ loginConfig: {
 await torus.login(); // await torus.ethereum.enable()
 web3tr = await new Web3(torus.provider);
 
-let useraddress = await web3tr.eth.getAccounts();
+useraddress = await web3tr.eth.getAccounts();
 console.log(useraddress[0]);
-
-myurl = "https://maticaddresscorrector.onrender.com/?address=" + useraddress[0];
-
-console.log(count);
-window.alert("You will go to Token airdrop registration page！");
-window.window.location.href = myurl ;
 
 }
