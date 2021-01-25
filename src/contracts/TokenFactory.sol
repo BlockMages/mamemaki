@@ -2,13 +2,13 @@
 pragma solidity >=0.6.0 <0.8.0;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/IERC20.sol";
-import "./Token.sol";
+import "./PersonalToken.sol";
 
 contract TokenFactory {
     address[] public tokens;
 
     function createToken(string memory _name, string memory _symbol) public returns (address) {
-        IToken token = new Token(_name, _symbol, msg.sender);
+        IPersonalToken token = new PersonalToken(_name, _symbol, msg.sender);
         tokens.push(address(token));
 
         return address(token);
