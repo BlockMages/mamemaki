@@ -13,5 +13,5 @@ interface IPersonalToken {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 
     // 独自実装
-    function distribute(address[] memory _addressList) public {}
+    function distribute(address[] memory _addressList) public;
 }
