@@ -9,7 +9,9 @@ contract PersonalToken is IPersonalToken, ERC20 {
 
     using SafeMath for uint256;
 
-    address ownerAddress;
+    address public ownerAddress;
+
+    address[] public tokenHolders;
 
     constructor(
         string memory _name,
@@ -17,6 +19,18 @@ contract PersonalToken is IPersonalToken, ERC20 {
         address _ownerAddress
     ) public ERC20(_name, _symbol) {
         ownerAddress = _ownerAddress;
+    }
+
+    // TODO: 同じアドレスが2回以上登録されないようにする
+    function _addTokenHolders(address _tokenHolder) private {
+        tokenHolders.push(_tokenHolder);
+    }
+
+    function getTokenHolders() public view returns (address[] memory) {
+        uint256 tokenHoldersCount = tokenHolders.length;
+        address[] memory tokenHoldersMemory = new address[](tokenHoldersCount);
+        tokenHoldersMemory = tokenHolders;
+        return tokenHoldersMemory;
     }
 
     function _additionalMint() private returns (uint256) {
@@ -38,5 +52,11 @@ contract PersonalToken is IPersonalToken, ERC20 {
                 revert("Token transfer failed.");
             }
         }
+    }
+
+    function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
+        _transfer(_msgSender(), recipient, amount);
+        _addTokenHolders(_addressList[i]);
+        return true;
     }
 }
