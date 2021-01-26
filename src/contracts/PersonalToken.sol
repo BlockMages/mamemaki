@@ -11,6 +11,10 @@ contract PersonalToken is ERC20 {
 
     address[] public tokenHolders;
 
+    uint256 public constant totalSupplyLimit = 21000000 * 1e18;
+    uint256 public distributionNum = 0;
+    uint256 constant mintRate = 20;
+    
     constructor(
         string memory _name,
         string memory _symbol,
@@ -31,25 +35,31 @@ contract PersonalToken is ERC20 {
         return tokenHoldersMemory;
     }
 
-    function _additionalMint() private returns (uint256) {
-        // TODO 発行量を計算で算出する
-        uint256 mintedAmount = 100;
-        _mint(msg.sender, mintedAmount);
-        return mintedAmount;
+    function _getMintAmount() private view returns (uint256) {
+        uint256 remainingReserve = totalSupplyLimit.sub(totalSupply());
+        return remainingReserve.mul(mintRate).div(100);
     }
 
+    function _additionalMint() private returns (uint256) {
+        uint256 mintAmount = _getMintAmount();
+        _mint(msg.sender, mintAmount);
+        return mintAmount;
+    }
+
+    // TODO 一定期間発行できないようにする
     function distribute(address[] memory _addressList) external {
         require(msg.sender == ownerAddress, "Only owner can distribute tokens.");
         uint256 mintedAmount = _additionalMint();
-        // uint256 mintedAmount = 100;
-
+        
         uint256 distributionAmountPerPerson = mintedAmount.div(_addressList.length);
-
+        
         for(uint256 i = 0; i < _addressList.length; i++) {
             if (transfer(_addressList[i], distributionAmountPerPerson) == false) {
                 revert("Token transfer failed.");
             }
         }
+        
+        distributionNum++;
     }
 
     function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
