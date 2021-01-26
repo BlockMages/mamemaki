@@ -3,9 +3,7 @@ pragma solidity >=0.6.0 <0.8.0;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol";
 
-import "./IPersonalToken.sol";
-
-contract PersonalToken is IPersonalToken, ERC20 {
+contract PersonalToken is ERC20 {
 
     using SafeMath for uint256;
 
@@ -17,7 +15,7 @@ contract PersonalToken is IPersonalToken, ERC20 {
         string memory _name,
         string memory _symbol,
         address _ownerAddress
-    ) public ERC20(_name, _symbol) {
+    ) ERC20(_name, _symbol) {
         ownerAddress = _ownerAddress;
     }
 
@@ -26,7 +24,7 @@ contract PersonalToken is IPersonalToken, ERC20 {
         tokenHolders.push(_tokenHolder);
     }
 
-    function getTokenHolders() public view returns (address[] memory) {
+    function getTokenHolders() external view returns (address[] memory) {
         uint256 tokenHoldersCount = tokenHolders.length;
         address[] memory tokenHoldersMemory = new address[](tokenHoldersCount);
         tokenHoldersMemory = tokenHolders;
@@ -40,7 +38,7 @@ contract PersonalToken is IPersonalToken, ERC20 {
         return mintedAmount;
     }
 
-    function distribute(address[] memory _addressList) public {
+    function distribute(address[] memory _addressList) external {
         require(msg.sender == ownerAddress, "Only owner can distribute tokens.");
         uint256 mintedAmount = _additionalMint();
         // uint256 mintedAmount = 100;
@@ -56,7 +54,7 @@ contract PersonalToken is IPersonalToken, ERC20 {
 
     function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
         _transfer(_msgSender(), recipient, amount);
-        _addTokenHolders(_addressList[i]);
+        _addTokenHolders(recipient);
         return true;
     }
 }
