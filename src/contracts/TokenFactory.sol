@@ -8,7 +8,7 @@ contract TokenFactory {
     address[] public tokens;
 
     function createToken(string memory _name, string memory _symbol) public returns (address) {
-        IPersonalToken token = new PersonalToken(_name, _symbol, msg.sender);
+        IERC20 token = new PersonalToken(_name, _symbol, msg.sender);
         tokens.push(address(token));
 
         return address(token);
