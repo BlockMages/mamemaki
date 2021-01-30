@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Vtuber</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body style="text-align: center;background: rgb(243,175,190);">
+    <div class="row">
+        <div class="col">
+            <h1 style="background: #ec7c9a;">🚀 VTuber Admin Page 🚀</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5"><img src="assets/img/ai_computer_sousa_robot.png" width="100%"></div>
+        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center">
+            <form>
+                <div class="form-group"><label style="font-size: 29px;">Name of Token</label><input class="form-control" type="text" id="name" placeholder="Kizuna Coin"><label style="font-size: 29px;">Symbol</label><input class="form-control" type="text" id="symbol" placeholder="AI"><a class="btn btn-primary" role="button" style="margin-top: 22px;background: rgb(235,54,120);border-color: rgb(255,0,0);" href="javascript:makeToken()">Create Vtuber Token</a></div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1 style="background: #ec7c9a;">🎂 Live Viewer List 🎂</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5">
+            <div class="table-responsive">
+                <table class="table" id="fanlist">
+                    <thead>
+                        <tr>
+                            <th>My Fan's Address</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col d-xl-flex justify-content-xl-center align-items-xl-center"><a class="btn btn-primary" role="button" style="margin-top: 22px;background: rgb(235,54,120);border-color: rgb(255,0,0);" href="javascript:distribute()">Distribute Token</a></div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/factory_abi.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@toruslabs/torus-embed"></script>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.2.7/dist/web3.min.js" integrity="sha256-9rSwSMn4GDjf9FcHmJSvdiKGrk+mNIUmM4ltFDu3MUU=" crossorigin="anonymous"></script>
+    <script src="assets/js/token_abi.js"></script>
+    <script src="assets/js/tokenlister.js"></script>
+    <script src="assets/js/torus.js"></script>
+    <script src="assets/js/vTuberAdmin.js"></script>
+</body>
+
+</html>
