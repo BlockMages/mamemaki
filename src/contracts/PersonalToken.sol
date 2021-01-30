@@ -12,10 +12,12 @@ contract PersonalToken is ERC20 {
     mapping (address => bool) registerdTokenHolders;
     address[] public tokenHolders;
 
+    string[] public urls;
+
     uint256 public constant totalSupplyLimit = 21000000 * 1e18;
     uint256 public distributionNum = 0;
     uint256 constant mintRate = 20;
-    
+
     constructor(
         string memory _name,
         string memory _symbol,
@@ -55,15 +57,15 @@ contract PersonalToken is ERC20 {
     function distribute(address[] memory _addressList) external {
         require(msg.sender == ownerAddress, "Only owner can distribute tokens.");
         uint256 mintedAmount = _additionalMint();
-        
+
         uint256 distributionAmountPerPerson = mintedAmount.div(_addressList.length);
-        
+
         for(uint256 i = 0; i < _addressList.length; i++) {
             if (transfer(_addressList[i], distributionAmountPerPerson) == false) {
                 revert("Token transfer failed.");
             }
         }
-        
+
         distributionNum++;
     }
 
@@ -71,5 +73,11 @@ contract PersonalToken is ERC20 {
         _transfer(_msgSender(), recipient, amount);
         _addTokenHolder(recipient);
         return true;
+    }
+
+    function addUrl(string _url) public returns(uint) {
+        urls.push(_url);
+        uint count = urls.length;
+        return count;
     }
 }
