@@ -9,6 +9,7 @@ contract PersonalToken is ERC20 {
 
     address public ownerAddress;
 
+    mapping (address => bool) registerdTokenHolders;
     address[] public tokenHolders;
 
     uint256 public constant totalSupplyLimit = 21000000 * 1e18;
@@ -20,12 +21,16 @@ contract PersonalToken is ERC20 {
         string memory _symbol,
         address _ownerAddress
     ) ERC20(_name, _symbol) {
+        require(_ownerAddress != address(0));
         ownerAddress = _ownerAddress;
     }
 
-    // TODO: 同じアドレスが2回以上登録されないようにする
-    function _addTokenHolders(address _tokenHolder) private {
-        tokenHolders.push(_tokenHolder);
+    function _addTokenHolder(address _tokenHolder) private {
+        require(_tokenHolder != address(0));
+        if (registerdTokenHolders[_tokenHolder] == false) {
+            tokenHolders.push(_tokenHolder);
+            registerdTokenHolders[_tokenHolder] = true;
+        }
     }
 
     function getTokenHolders() external view returns (address[] memory) {
@@ -64,7 +69,7 @@ contract PersonalToken is ERC20 {
 
     function transfer(address recipient, uint256 amount) public virtual override returns (bool) {
         _transfer(_msgSender(), recipient, amount);
-        _addTokenHolders(recipient);
+        _addTokenHolder(recipient);
         return true;
     }
 }

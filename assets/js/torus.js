@@ -6,10 +6,10 @@ window.onload = async function(){
 //    window.alert(location.pathname);
     console.log("loaded");
     await connecttorus();
-    if (location.pathname == "/fanAddressList.html" ){
+    if (window.location.href.split('/').pop() == "fanAddressList.html" ){
     setList()
     }
-    if ( location.pathname == "/vTuberAdmin.html"){
+    if ( window.location.href.split('/').pop() == "vTuberAdmin.html"){
         //window.alert("vtuber Admin page")
         makeList()
     }

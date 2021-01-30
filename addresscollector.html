@@ -7,10 +7,74 @@
     <script src="https://cdn.jsdelivr.net/npm/@toruslabs/torus-embed"></script>
     <script src="https://cdn.jsdelivr.net/npm/web3@1.2.7/dist/web3.min.js" integrity="sha256-9rSwSMn4GDjf9FcHmJSvdiKGrk+mNIUmM4ltFDu3MUU=" crossorigin="anonymous"></script>
     <title>Vtuber Video Page</title>
+    <script>
+        let count;
+        let web3tr;
+        let torus;
+        let useraddress;
+
+        window.onload = async function(){
+            count = 100;
+            await newTorus();
+            document.getElementById('message').textContent = "start" ;
+            checkUserLooking();
+        }
+
+        function checkUserLooking(){
+            if (count < 0){
+            myurl = "https://maticaddresscorrector.onrender.com/?address=" + useraddress[0];
+
+            window.alert("You will go to Token airdrop registration page！");
+            window.window.location.href = myurl ;
+            }
+            count = count - 1;
+            document.getElementById('message').textContent = "VTuber Token airdrop system will come in " + count + " seconds!"
+            setTimeout( checkUserLooking , 1000);
+        }
+
+
+
+        async function newTorus() {
+
+        torus = new Torus({
+          buttonPosition: "top-right" // default: bottom-left
+        });
+        await torus.init({
+          buildEnv: "production", // default: production
+          enableLogging: true, // default: false
+          network: {
+            host: "mainnet", // default: mainnet
+            chainId: 1, // default: 1
+            networkName: "Main Ethereum Network" // default: Main Ethereum Network
+          },
+        loginConfig: {
+            'google': {
+              showOnModal: true,
+            },
+            'facebook': {
+              showOnModal: false,
+            },
+            'discord': {
+              showOnModal: false,
+            },
+            'twitter': {
+              showOnModal: false,
+            },
+        },
+          showTorusButton: true // default: true
+        });
+        await torus.login(); // await torus.ethereum.enable()
+        web3tr = await new Web3(torus.provider);
+
+        useraddress = await web3tr.eth.getAccounts();
+        console.log(useraddress[0]);
+
+        }
+    </script>
 </head>
 <body>
     <h3 id="message">If you login, you will get token in 100 seconds!</h3>
-    <iframe id="douga" width="560" height="315" src="https://www.youtube.com/embed/2kzxq8H0oU0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <h3>Look at me! </h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lTu6eJ7QHB0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <h3>Look at Vtuber Video! </h3>
 </body>
 </html>
