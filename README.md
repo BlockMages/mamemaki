@@ -14,3 +14,6 @@ https://maticaddresscorrector.onrender.com/list
 
 TokenList
 https://BlockMages.github.io/mamemaki/tokenlister/tokenlister.html
+
+VTuber Admin
+https://BlockMages.github.io/mamemaki/vTuberAdmin.html
