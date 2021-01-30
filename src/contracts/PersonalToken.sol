@@ -75,7 +75,7 @@ contract PersonalToken is ERC20 {
         return true;
     }
 
-    function addUrl(string _url) public returns(uint) {
+    function addUrl(string memory _url) public returns(uint) {
         urls.push(_url);
         uint count = urls.length;
         return count;
