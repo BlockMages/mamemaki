@@ -1,6 +1,6 @@
 
-//vtuber-matic-testnet
-const tokenaddress = "0x677ccE01DDFF60C1F2782f2E536b25a10A916947"
+//vtuber-matic-testnet-VtuberSampleToken
+const tokenaddress = "0xACD660F3a59f10C2a7a1b72eceA2972f627b7bA8"
 
 
 const abi = [
@@ -74,6 +74,25 @@ const abi = [
 		],
 		"name": "Transfer",
 		"type": "event"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_url",
+				"type": "string"
+			}
+		],
+		"name": "addUrl",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
 	},
 	{
 		"inputs": [
@@ -377,6 +396,25 @@ const abi = [
 			}
 		],
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "urls",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	}
 ]

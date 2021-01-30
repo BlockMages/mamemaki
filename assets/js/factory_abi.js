@@ -1,7 +1,8 @@
 
-//vtuber-matic-testnet
-const factoryaddress = "0xDb00e83e2C2c1C575782FdA349cc716FE513adD6"
+//vtuber-matic-testnet-factory-address
 
+
+const factoryaddress = "0x5858f168Ad78F1f6349b977aC137b112e5CcB971"
 
 const factoryabi = [
 	{
@@ -36,6 +37,25 @@ const factoryabi = [
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "ownerToTokens",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",

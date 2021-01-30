@@ -29,7 +29,7 @@ async function makeList() {
 }
 
 async function distribute(){
-    mytokenaddress = await getTokenAddress( 2 );
+    mytokenaddress = await getMyTokenAddress( );
 //    mycontract3 = await new web3tr.eth.Contract(abi, "0x280FEc7E59Df46eb1C6Ec17Faa4a972134b00e66"); 
     mycontract3 = await new web3tr.eth.Contract(abi, mytokenaddress); 
 
@@ -39,9 +39,17 @@ async function distribute(){
 }
 
 async function getTokenAddress( tnum ){
-    mycontract3 = await new web3tr.eth.Contract(factoryabi, factoryaddress);
-    let fromblockchain1 = await  mycontract3.methods.tokens(tnum).call();
+    factorycontract = await new web3tr.eth.Contract(factoryabi, factoryaddress);
+    let fromblockchain1 = await  factorycontract.methods.tokens(tnum).call();
     console.log(fromblockchain1);
     return fromblockchain1;
 }
+
+async function getMyTokenAddress( ){
+    factorycontract = await new web3tr.eth.Contract(factoryabi, factoryaddress);
+    let fromblockchain1 = await  factorycontract.methods.ownerToTokens(useraddress[0]).call();
+    console.log(fromblockchain1);
+    return fromblockchain1;
+}
+
 
