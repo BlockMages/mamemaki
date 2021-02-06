@@ -12,7 +12,7 @@ async function setList() {
         let cellElem1 = trElem.insertCell(1);
         qty = await checkbalance(holderList[i]);
         console.log(JSON.stringify(qty))
-        cellElem1.appendChild(document.createTextNode(qty));
+        cellElem1.appendChild(document.createTextNode(qty / 10**18));
     }
 }
 
