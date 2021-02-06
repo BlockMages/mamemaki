@@ -1,7 +1,7 @@
 
 //vtuber-matic-testnet-VtuberSampleToken
-const tokenaddress = "0xACD660F3a59f10C2a7a1b72eceA2972f627b7bA8"
-
+//const tokenaddress = "0xACD660F3a59f10C2a7a1b72eceA2972f627b7bA8"
+const tokenaddress = "0xFD3b4c941FA3113BC8E2b3d2ec0e727b730F4FE2"
 
 const abi = [
 	{

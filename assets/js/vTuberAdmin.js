@@ -31,8 +31,8 @@ async function makeList() {
 async function distribute(){
     mytokenaddress = await getMyTokenAddress( );
 //    mycontract3 = await new web3tr.eth.Contract(abi, "0x280FEc7E59Df46eb1C6Ec17Faa4a972134b00e66"); 
-    mycontract3 = await new web3tr.eth.Contract(abi, mytokenaddress); 
-
+//    mycontract3 = await new web3tr.eth.Contract(abi, mytokenaddress); 
+    mycontract3 = await new web3tr.eth.Contract(abi, getMyTokenAddress( )); 
 //    window.alert(myfanaddresslist);
 //    window.alert(mycontract3);
     let ret = await mycontract3.methods.distribute( myfanaddresslist ).send({ from: useraddress[0] });
